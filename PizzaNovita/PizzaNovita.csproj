@@ -183,7 +183,7 @@
     <Content Include="Views\Combo\listaCombos.cshtml" />
     <Content Include="Views\Combo\agregarCombo.cshtml" />
     <Content Include="Views\Pedido\recoger.cshtml" />
-    <Content Include="Views\Pedido\llevar.cshtml" />
+    <Content Include="Views\Pedido\aDomicilio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

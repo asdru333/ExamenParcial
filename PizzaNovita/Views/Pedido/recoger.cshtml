@@ -1,8 +1,9 @@
 ﻿@model PizzaNovita.Models.PedidoModel
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Combos</title>
+    <title>Recoger</title>
     <meta charset="utf-8" />
 
     <style>
@@ -18,7 +19,6 @@
 </head>
 
 <body>
-
     @using (Html.BeginForm("recoger", "Pedido", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <p class="alert-success">@ViewBag.Message</p>
@@ -44,17 +44,9 @@
                     @Html.TextBoxFor(model => model.apellidoCliente, new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.apellidoCliente, "", new { @class = "text-danger" })
                 </div>
-
-                @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "control-label" })
-                <div>
-                    @Html.TextBoxFor(model => model.direccion, new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
-                </div>
             </div>
         </div>
-
         <br />
-
         <div class="row">
             <div class="col-md-4">
                 <h3><strong>El total a pagar es: @ViewBag.precio colones</strong></h3>

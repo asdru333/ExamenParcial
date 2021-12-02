@@ -36,6 +36,8 @@
                         <li>@combo.acompanante</li>
                     </ul>
                 <p>Precio: @combo.precio colones</p>
+                 @Html.ActionLink("Recoger", "recoger", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
+                @Html.ActionLink("A domicilio", "aDomicilio", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
             </div>
         }
     </div>

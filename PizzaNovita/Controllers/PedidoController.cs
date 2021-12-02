@@ -49,17 +49,17 @@ namespace PizzaNovita.Controllers
         }
 
         [HttpGet]
-        public ActionResult llevar(string nombre)
+        public ActionResult aDomicilio(string nombre)
         {
             ComestibleHandler accesoDatos = new ComestibleHandler();
             ComestibleModel comestible = accesoDatos.obtenerComestible(nombre);
             ViewBag.nombreComestible = comestible.nombre;
-            ViewBag.precio = comestible.precio;
+            ViewBag.precio = comestible.precio + 1000;
             return View();
         }
 
         [HttpPost]
-        public ActionResult llevar(PedidoModel pedido)
+        public ActionResult aDomicilio(PedidoModel pedido)
         {
             PedidoHandler accesoDatos = new PedidoHandler();
             pedido.nombreComestible = Request.Form["nombreComestible"];
