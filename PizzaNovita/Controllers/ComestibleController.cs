@@ -18,7 +18,7 @@ namespace PizzaNovita.Controllers
             ViewBag.bebida = accesoDatos.obtenerBebidas();
             ViewBag.acompanante = accesoDatos.obtenerAcompanantes();
             ViewBag.ingrediente = ingrediente;
-            return View();
+            return View("listaComestibles");
         }
 
         [HttpGet]
@@ -32,7 +32,7 @@ namespace PizzaNovita.Controllers
         [HttpGet]
         public ActionResult agregarPizza()
         {
-            return View();
+            return View("agregarPizza");
         }
 
         [HttpPost]
@@ -55,19 +55,19 @@ namespace PizzaNovita.Controllers
                         ModelState.Clear();
                     }
                 }
-                return View();
+                return View("agregarPizza");
             }
             catch
             {
                 ViewBag.Message = "Algo salió mal y no fue posible crear la pizza";
-                return View();
+                return View("agregarPizza");
             }
         }
 
         [HttpGet]
         public ActionResult agregarBebida()
         {
-            return View();
+            return View("agregarBebida");
         }
 
         [HttpPost]
@@ -86,19 +86,19 @@ namespace PizzaNovita.Controllers
                         ModelState.Clear();
                     }
                 }
-                return View();
+                return View("agregarBebida");
             }
             catch
             {
                 ViewBag.Message = "Algo salió mal y no fue posible crear la bebida";
-                return View();
+                return View("agregarBebida");
             }
         }
 
         [HttpGet]
         public ActionResult agregarAcompanante()
         {
-            return View();
+            return View("agregarAcompanante");
         }
 
         [HttpPost]
@@ -117,12 +117,12 @@ namespace PizzaNovita.Controllers
                         ModelState.Clear();
                     }
                 }
-                return View();
+                return View("agregarAcompanante");
             }
             catch
             {
                 ViewBag.Message = "Algo salió mal y no fue posible crear el acompañante";
-                return View();
+                return View("agregarAcompanante");
             }
         }
     }
