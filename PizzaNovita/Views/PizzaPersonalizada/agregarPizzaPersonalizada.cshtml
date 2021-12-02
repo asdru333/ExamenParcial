@@ -1,0 +1,80 @@
+﻿@model PizzaNovita.Models.PizzaModel
+@{
+    List<SelectListItem> Ingredientes = new List<SelectListItem>() {
+        new SelectListItem { Text = "Queso mozarella", Value = "Queso mozarella"  },
+        new SelectListItem { Text = "Jamón", Value = "Jamón" },
+        new SelectListItem { Text = "Champiñones", Value = "Champiñones" },
+        new SelectListItem { Text = "Chile dulce", Value = "Chile dulce" },
+        new SelectListItem { Text = "Cebolla", Value = "Cebolla" },
+        new SelectListItem { Text = "Aceitunas", Value = "Aceitunas" },
+        new SelectListItem { Text = "Bacon", Value = "Bacon" },
+        new SelectListItem { Text = "Pepperoni", Value = "Pepperoni" },
+        new SelectListItem { Text = "Piña", Value = "Piña" }
+    };
+
+    List<SelectListItem> Salsas = new List<SelectListItem>() {
+        new SelectListItem { Text = "Tomate", Value = "Tomate"  },
+        new SelectListItem { Text = "BBQ", Value = "BBQ" },
+        new SelectListItem { Text = "Picante", Value = "Picante" },
+    };
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pizzas</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    @using (Html.BeginForm("agregarPizzaPersonalizada", "PizzaPersonalizada", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <p class="alert-success">@ViewBag.Message</p>
+        <h1> Formulario de agregar pizzas</h1>
+
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+
+                <label class="control-label" for="nombre">Agreguele un nombre a su creación</label>
+                <div>
+                    @Html.TextBoxFor(model => model.nombre, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+                </div>
+
+                <br>
+
+                @Html.LabelFor(model => model.salsa, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.DropDownListFor(model => model.salsa, Salsas, "- - -", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.salsa, "", new { @class = "text-danger" })
+                </div>
+
+                <br>
+
+                @foreach (var item in Ingredientes)
+                {
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                   name="Ingredientes"
+                                   value="@item.Value" />
+                            @item.Value
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <div class="col-1 col-md-4 col-sm-2">
+                <input type="submit" class="btn btn-success" value="Crear pizza" />
+            </div>
+        </div>
+    }
+    <div>
+        @Html.ActionLink("Regresar a Inicio", "Index", "Home")
+    </div>
+</body>
+</html>

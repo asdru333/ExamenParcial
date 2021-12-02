@@ -18,7 +18,7 @@ namespace PizzaNovita.Models
         [RegularExpression("^[0-9]+(.[0-9]+){0,1}$", ErrorMessage = "Debe ingresar números")]
         public double precio { get; set; }
 
-        [Display(Name = "Foto del funcionario")]
+        [Display(Name = "Foto del comestible")]
         [Required(ErrorMessage = "Es necesario que ingrese la foto del comestible")]
         public HttpPostedFileBase fotoArchivo { get; set; }
 

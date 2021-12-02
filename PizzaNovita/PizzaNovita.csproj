@@ -124,6 +124,7 @@
     <Compile Include="Controllers\ComestibleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PedidoController.cs" />
+    <Compile Include="Controllers\PizzaPersonalizadaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -184,6 +185,7 @@
     <Content Include="Views\Combo\agregarCombo.cshtml" />
     <Content Include="Views\Pedido\recoger.cshtml" />
     <Content Include="Views\Pedido\aDomicilio.cshtml" />
+    <Content Include="Views\PizzaPersonalizada\agregarPizzaPersonalizada.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
