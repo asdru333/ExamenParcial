@@ -30,13 +30,13 @@ namespace PizzaNovita.Controllers
         }
 
         [HttpGet]
-        public ActionResult AgregarPizza()
+        public ActionResult agregarPizza()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgregarPizza(PizzaModel pizza, string ingredientes)
+        public ActionResult agregarPizza(PizzaModel pizza, string ingredientes)
         {
             ViewBag.ExitoAlCrear = false;
             try
@@ -65,13 +65,13 @@ namespace PizzaNovita.Controllers
         }
 
         [HttpGet]
-        public ActionResult AgregarBebida()
+        public ActionResult agregarBebida()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgregarBebida(BebidaModel bebida)
+        public ActionResult agregarBebida(BebidaModel bebida)
         {
             ViewBag.ExitoAlCrear = false;
             try
@@ -96,13 +96,13 @@ namespace PizzaNovita.Controllers
         }
 
         [HttpGet]
-        public ActionResult AgregarAcompanante()
+        public ActionResult agregarAcompanante()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AgregarAcompanante(AcompananteModel acompanante)
+        public ActionResult agregarAcompanante(AcompananteModel acompanante)
         {
             ViewBag.ExitoAlCrear = false;
             try
