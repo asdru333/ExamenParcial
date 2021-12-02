@@ -36,7 +36,7 @@ namespace PizzaNovita.Controllers
         }
 
         [HttpPost]
-        public ActionResult agregarPizza(PizzaModel pizza, string ingredientes)
+        public ActionResult agregarPizza(PizzaModel pizza)
         {
             ViewBag.ExitoAlCrear = false;
             try

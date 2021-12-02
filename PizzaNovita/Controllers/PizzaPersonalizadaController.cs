@@ -16,7 +16,7 @@ namespace PizzaNovita.Controllers
         }
 
         [HttpPost]
-        public ActionResult agregarPizzaPersonalizada(PizzaModel pizza, string ingredientes)
+        public ActionResult agregarPizzaPersonalizada(PizzaModel pizza)
         {
             ViewBag.ExitoAlCrear = false;
             try
@@ -24,6 +24,7 @@ namespace PizzaNovita.Controllers
                 if (ModelState.IsValid)
                 {
                     ComestibleHandler accesoDatos = new ComestibleHandler();
+                    pizza.precio = calcularPrecio(pizza);
                     ViewBag.ExitoAlCrear = accesoDatos.agregarPizza(pizza, 1);
                     if (ViewBag.ExitoAlCrear)
                     {
@@ -33,7 +34,11 @@ namespace PizzaNovita.Controllers
                         }
                         ViewBag.Message = "La pizza " + pizza.nombre + " fue creada con éxito.";
                         ModelState.Clear();
+                        pedirPizzaPersonalizada(pizza);
                     }
+                } else
+                {
+                    ViewBag.Message = "Algo salió mal y no fue posible crear la pizza";
                 }
                 return View("agregarPizzaPersonalizada");
             }
@@ -43,5 +48,24 @@ namespace PizzaNovita.Controllers
                 return View("agregarPizzaPersonalizada");
             }
         }
+
+        public ActionResult pedirPizzaPersonalizada(PizzaModel pizza)
+        {
+            return View("pedirPizzaPersonalizada");
+        }
+
+        public double calcularPrecio(PizzaModel pizza)
+        {
+            double precioBase = 4000.0;
+            if (pizza.salsa != "tomate")
+                precioBase += 1000.0;
+            foreach (var variable in pizza.ingredientes)
+            {
+                precioBase += 500.0;
+            }
+            return precioBase;
+        }
     }
+
+
 }
