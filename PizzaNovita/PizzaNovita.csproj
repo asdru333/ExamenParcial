@@ -132,6 +132,7 @@
     <Compile Include="Handlers\ComestibleHandler.cs" />
     <Compile Include="Models\AcompananteModel.cs" />
     <Compile Include="Models\BebidaModel.cs" />
+    <Compile Include="Models\PedidoModel.cs" />
     <Compile Include="Models\ComboModel.cs" />
     <Compile Include="Models\PizzaModel.cs" />
     <Compile Include="Models\ComestibleModel.cs" />
