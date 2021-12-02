@@ -28,9 +28,9 @@ namespace PizzaNovita.Handlers
             return comestible;
         }
 
-        public List<PizzaModel> obtenerPizzas()
+        public List<PizzaModel> obtenerPizzas(int personalizada)
         {
-            string consulta = "SELECT * FROM Comestible C JOIN Pizza P ON C.nombrePK = P.nombreFK;";
+            string consulta = "SELECT * FROM Comestible C JOIN Pizza P ON C.nombrePK = P.nombreFK WHERE P.personalizada = '" + personalizada + "';"; ;
             List<PizzaModel> pizzas = new List<PizzaModel>();
             DataTable tabla = leerBaseDeDatos(consulta);
             foreach (DataRow columna in tabla.Rows)
@@ -59,13 +59,13 @@ namespace PizzaNovita.Handlers
             return ingredientes;
         }
 
-        public bool agregarPizza(PizzaModel pizza)
+        public bool agregarPizza(PizzaModel pizza, int personalizada)
         {
             string ConsultaComestible = "INSERT INTO Comestible ( nombrePK, precio, fotoArchivo, fotoTipo ) "
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
 
-            string ConsultaPizza = "INSERT INTO Pizza (nombreFK, salsa ) "
-                + "VALUES (@nombrePizza, @salsa );";
+            string ConsultaPizza = "INSERT INTO Pizza (nombreFK, salsa, personalizada ) "
+                + "VALUES (@nombrePizza, @salsa, @personalizada );";
 
             Dictionary<string, object> valoresParametrosComestible = new Dictionary<string, object> {
                 {"@nombre", pizza.nombre },
@@ -76,7 +76,8 @@ namespace PizzaNovita.Handlers
 
             Dictionary<string, object> valoresParametrosPizza = new Dictionary<string, object> {
                 {"@nombrePizza", pizza.nombre },
-                {"@salsa", pizza.salsa }
+                {"@salsa", pizza.salsa },
+                {"@personalizada", personalizada }
             };
 
             return (insertarEnBaseDatos(ConsultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(ConsultaPizza, valoresParametrosPizza));
