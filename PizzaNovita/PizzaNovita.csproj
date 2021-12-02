@@ -123,6 +123,7 @@
     <Compile Include="Controllers\ComboController.cs" />
     <Compile Include="Controllers\ComestibleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PedidoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -130,6 +131,7 @@
     <Compile Include="Handlers\BaseDatosHandler.cs" />
     <Compile Include="Handlers\FilesHandler.cs" />
     <Compile Include="Handlers\ComestibleHandler.cs" />
+    <Compile Include="Handlers\PedidoHandler.cs" />
     <Compile Include="Models\AcompananteModel.cs" />
     <Compile Include="Models\BebidaModel.cs" />
     <Compile Include="Models\PedidoModel.cs" />
@@ -183,6 +185,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Pedido\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
