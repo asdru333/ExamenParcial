@@ -18,7 +18,7 @@ namespace PizzaNovita.Controllers
             ComestibleModel comestible = accesoDatos.obtenerComestible(nombre);
             ViewBag.nombreComestible = comestible.nombre;
             ViewBag.precio = comestible.precio;
-            return View();
+            return View("recoger");
         }
 
         [HttpPost]
@@ -39,12 +39,12 @@ namespace PizzaNovita.Controllers
                     ViewBag.Message = "El pedido fue realizado con exito";
                     ModelState.Clear();
                 }
-                return View();
+                return View("recoger");
             }
             catch
             {
                 ViewBag.Message = "Algo salió mal.";
-                return View();
+                return View("recoger");
             }
         }
 
@@ -55,7 +55,7 @@ namespace PizzaNovita.Controllers
             ComestibleModel comestible = accesoDatos.obtenerComestible(nombre);
             ViewBag.nombreComestible = comestible.nombre;
             ViewBag.precio = comestible.precio + 1000;
-            return View();
+            return View("aDomicilio");
         }
 
         [HttpPost]
@@ -75,12 +75,12 @@ namespace PizzaNovita.Controllers
                     ViewBag.Message = "El pedido fue realizado con exito";
                     ModelState.Clear();
                 }
-                return View();
+                return View("aDomicilio");
             }
             catch
             {
                 ViewBag.Message = "Algo salió mal.";
-                return View();
+                return View("aDomicilio");
             }
         }
     }

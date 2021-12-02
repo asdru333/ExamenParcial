@@ -91,6 +91,7 @@
   <ItemGroup>
     <Compile Include="Controllers\ComestibleControllerTest.cs" />
     <Compile Include="Controllers\ComboControllerTest.cs" />
+    <Compile Include="Controllers\PedidoControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
