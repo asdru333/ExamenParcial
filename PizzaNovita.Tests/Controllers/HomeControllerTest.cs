@@ -13,7 +13,7 @@ namespace PizzaNovita.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void TestIndexViewIsNotNull()
         {
             // Arrange
             HomeController controller = new HomeController();
@@ -23,6 +23,19 @@ namespace PizzaNovita.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestIndexViewResult()
+        {
+            //Arrange 
+            HomeController comestibleController = new HomeController();
+
+            //Act 
+            ViewResult vista = comestibleController.Index() as ViewResult;
+
+            //Assert 
+            Assert.AreEqual("Index", vista.ViewName);
         }
     }
 }
