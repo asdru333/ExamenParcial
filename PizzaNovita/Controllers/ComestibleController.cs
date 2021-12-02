@@ -44,7 +44,7 @@ namespace PizzaNovita.Controllers
                 if (ModelState.IsValid)
                 {
                     ComestibleHandler accesoDatos = new ComestibleHandler();
-                    ViewBag.ExitoAlCrear = accesoDatos.agregarPizza(pizza, 0);
+                    ViewBag.ExitoAlCrear = accesoDatos.agregarPizza(pizza);
                     if (ViewBag.ExitoAlCrear)
                     {
                         foreach (var variable in pizza.ingredientes)

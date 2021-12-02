@@ -18,6 +18,7 @@ namespace PizzaNovita.Controllers
             ComestibleModel comestible = accesoDatos.obtenerComestible(nombre);
             ViewBag.nombreComestible = comestible.nombre;
             ViewBag.precio = comestible.precio;
+            ViewBag.foto = comestible.fotoTipo;
             return View("recoger");
         }
 
@@ -30,6 +31,7 @@ namespace PizzaNovita.Controllers
             pedido.direccion = "";
             ViewBag.nombreComestible = pedido.nombreComestible;
             ViewBag.precio = pedido.precio;
+            ViewBag.foto = Request.Form["fotoComestible"];
             ViewBag.exitoAlInscribir = false;
             try
             {
@@ -55,6 +57,7 @@ namespace PizzaNovita.Controllers
             ComestibleModel comestible = accesoDatos.obtenerComestible(nombre);
             ViewBag.nombreComestible = comestible.nombre;
             ViewBag.precio = comestible.precio + 1000;
+            ViewBag.foto = comestible.fotoTipo;
             return View("aDomicilio");
         }
 
@@ -66,6 +69,7 @@ namespace PizzaNovita.Controllers
             pedido.precio = Double.Parse(Request.Form["precioComestible"]);
             ViewBag.nombreComestible = pedido.nombreComestible;
             ViewBag.precio = pedido.precio;
+            ViewBag.foto = Request.Form["fotoComestible"];
             ViewBag.exitoAlInscribir = false;
             try
             {

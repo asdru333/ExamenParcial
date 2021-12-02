@@ -1,0 +1,21 @@
+﻿@model PizzaNovita.Models.PizzaModel
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Combos</title>
+    <meta charset="utf-8" />
+</head>
+
+<body>
+    <p class="alert-success">@ViewBag.Message</p>
+    <h1>Su pizza @ViewBag.nombre has sido creada con éxito</h1>
+    <h3>El precio total es: @ViewBag.precio</h3>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-12">
+            @Html.ActionLink("Recoger", "recoger", "Pedido", new { nombre = ViewBag.nombre.ToString() }, new { @class = "btn btn-success" })
+            @Html.ActionLink("A domicilio", "aDomicilio", "Pedido", new { nombre = ViewBag.nombre.ToString() }, new { @class = "btn btn-success" })
+        </div>
+    </div>
+</body>
+</html>

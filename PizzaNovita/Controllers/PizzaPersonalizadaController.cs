@@ -21,21 +21,18 @@ namespace PizzaNovita.Controllers
             ViewBag.ExitoAlCrear = false;
             try
             {
-                if (ModelState.IsValid)
+                ComestibleHandler accesoDatos = new ComestibleHandler();
+                pizza.precio = calcularPrecio(pizza);
+                ViewBag.ExitoAlCrear = accesoDatos.agregarPizzaPersonalizada(pizza);
+                if (ViewBag.ExitoAlCrear)
                 {
-                    ComestibleHandler accesoDatos = new ComestibleHandler();
-                    pizza.precio = calcularPrecio(pizza);
-                    ViewBag.ExitoAlCrear = accesoDatos.agregarPizza(pizza, 1);
-                    if (ViewBag.ExitoAlCrear)
+                    foreach (var variable in pizza.ingredientes)
                     {
-                        foreach (var variable in pizza.ingredientes)
-                        {
-                            accesoDatos.agregarIngredientes(pizza.nombre, variable);
-                        }
-                        ViewBag.Message = "La pizza " + pizza.nombre + " fue creada con éxito.";
-                        ModelState.Clear();
-                        pedirPizzaPersonalizada(pizza);
+                        accesoDatos.agregarIngredientes(pizza.nombre, variable);
                     }
+                    ViewBag.Message = "La pizza " + pizza.nombre + " fue creada con éxito.";
+                    ModelState.Clear();
+                    return pedirPizzaPersonalizada(pizza);
                 } else
                 {
                     ViewBag.Message = "Algo salió mal y no fue posible crear la pizza";
@@ -51,13 +48,15 @@ namespace PizzaNovita.Controllers
 
         public ActionResult pedirPizzaPersonalizada(PizzaModel pizza)
         {
+            ViewBag.nombre = pizza.nombre;
+            ViewBag.precio = pizza.precio;
             return View("pedirPizzaPersonalizada");
         }
 
         public double calcularPrecio(PizzaModel pizza)
         {
             double precioBase = 4000.0;
-            if (pizza.salsa != "tomate")
+            if (pizza.salsa != "Tomate")
                 precioBase += 1000.0;
             foreach (var variable in pizza.ingredientes)
             {
@@ -66,6 +65,4 @@ namespace PizzaNovita.Controllers
             return precioBase;
         }
     }
-
-
 }

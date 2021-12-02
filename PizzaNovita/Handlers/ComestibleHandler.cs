@@ -22,7 +22,8 @@ namespace PizzaNovita.Handlers
                 comestible = new ComestibleModel
                 {
                     nombre = Convert.ToString(tabla.Rows[0]["nombrePK"]),
-                    precio = Convert.ToDouble(tabla.Rows[0]["precio"])
+                    precio = Convert.ToDouble(tabla.Rows[0]["precio"]),
+                    fotoTipo = Convert.ToString(tabla.Rows[0]["fotoTipo"])
                 };
             }
             return comestible;
@@ -59,7 +60,7 @@ namespace PizzaNovita.Handlers
             return ingredientes;
         }
 
-        public bool agregarPizza(PizzaModel pizza, int personalizada)
+        public bool agregarPizza(PizzaModel pizza)
         {
             string ConsultaComestible = "INSERT INTO Comestible ( nombrePK, precio, fotoArchivo, fotoTipo ) "
                 + "VALUES ( @nombre, @precio, @fotoArchivo, @fotoTipo );";
@@ -77,7 +78,29 @@ namespace PizzaNovita.Handlers
             Dictionary<string, object> valoresParametrosPizza = new Dictionary<string, object> {
                 {"@nombrePizza", pizza.nombre },
                 {"@salsa", pizza.salsa },
-                {"@personalizada", personalizada }
+                {"@personalizada", 0 }
+            };
+
+            return (insertarEnBaseDatos(ConsultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(ConsultaPizza, valoresParametrosPizza));
+        }
+
+        public bool agregarPizzaPersonalizada(PizzaModel pizza)
+        {
+            string ConsultaComestible = "INSERT INTO Comestible ( nombrePK, precio) "
+                + "VALUES ( @nombre, @precio);";
+
+            string ConsultaPizza = "INSERT INTO Pizza (nombreFK, salsa, personalizada ) "
+                + "VALUES (@nombrePizza, @salsa, @personalizada );";
+
+            Dictionary<string, object> valoresParametrosComestible = new Dictionary<string, object> {
+                {"@nombre", pizza.nombre },
+                {"@precio", pizza.precio },
+            };
+
+            Dictionary<string, object> valoresParametrosPizza = new Dictionary<string, object> {
+                {"@nombrePizza", pizza.nombre },
+                {"@salsa", pizza.salsa },
+                {"@personalizada", 1 }
             };
 
             return (insertarEnBaseDatos(ConsultaComestible, valoresParametrosComestible) && insertarEnBaseDatos(ConsultaPizza, valoresParametrosPizza));
