@@ -182,10 +182,11 @@
     <Content Include="Views\Comestible\agregarAcompanante.cshtml" />
     <Content Include="Views\Combo\listaCombos.cshtml" />
     <Content Include="Views\Combo\agregarCombo.cshtml" />
+    <Content Include="Views\Pedido\recoger.cshtml" />
+    <Content Include="Views\Pedido\llevar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Pedido\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
