@@ -43,7 +43,7 @@
                         @ViewBag.ingrediente
                     }
                 </p>
-                <p>Precio: @pizza.precio</p>
+                <p>Precio: @pizza.precio colones</p>
             </div>
         }
     </div>
@@ -57,7 +57,7 @@
                 <h3>@bebida.nombre</h3>
                 <p>Tipo: @bebida.categoriaBebida</p>
                 <p>Litros: @bebida.litros</p>
-                <p>Precio: @bebida.precio</p>
+                <p>Precio: @bebida.precio colones</p>
             </div>
         }
     </div>
@@ -70,7 +70,7 @@
                 <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = acompanante.nombre })>
                 <h3>@acompanante.nombre</h3>
                 <p>Unidades: @acompanante.unidades</p>
-                <p>Precio: @acompanante.precio</p>
+                <p>Precio: @acompanante.precio colones</p>
             </div>
         }
     </div>
