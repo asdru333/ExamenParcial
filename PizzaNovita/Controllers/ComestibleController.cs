@@ -10,9 +10,15 @@ namespace PizzaNovita.Controllers
 {
     public class ComestibleController : Controller
     {
+        private ComestibleHandler accesoDatos;
+
+        public ComestibleController()
+        {
+            accesoDatos = new ComestibleHandler();
+        }
+
         public ActionResult listaComestibles()
         {
-            ComestibleHandler accesoDatos = new ComestibleHandler();
             string ingrediente = "";
             ViewBag.pizza = accesoDatos.obtenerPizzas(0);
             ViewBag.bebida = accesoDatos.obtenerBebidas();
@@ -24,8 +30,7 @@ namespace PizzaNovita.Controllers
         [HttpGet]
         public ActionResult ObtenerImagen(string nombre)
         {
-            ComestibleHandler comestibleHandler = new ComestibleHandler();
-            var tupla = comestibleHandler.obtenerFoto(nombre);
+            var tupla = accesoDatos.obtenerFoto(nombre);
             return File(tupla.Item1, tupla.Item2);
         }
 
@@ -43,7 +48,6 @@ namespace PizzaNovita.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    ComestibleHandler accesoDatos = new ComestibleHandler();
                     ViewBag.ExitoAlCrear = accesoDatos.agregarPizza(pizza);
                     if (ViewBag.ExitoAlCrear)
                     {
@@ -78,7 +82,6 @@ namespace PizzaNovita.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    ComestibleHandler accesoDatos = new ComestibleHandler();
                     ViewBag.ExitoAlCrear = accesoDatos.agregarBebida(bebida);
                     if (ViewBag.ExitoAlCrear)
                     {
@@ -109,7 +112,6 @@ namespace PizzaNovita.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    ComestibleHandler accesoDatos = new ComestibleHandler();
                     ViewBag.ExitoAlCrear = accesoDatos.agregarAcompanante(acompanante);
                     if (ViewBag.ExitoAlCrear)
                     {

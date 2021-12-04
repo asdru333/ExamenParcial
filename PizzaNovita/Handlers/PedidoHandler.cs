@@ -11,8 +11,6 @@ namespace PizzaNovita.Handlers
 {
     public class PedidoHandler : BaseDatosHandler
     {
-
-
         public List<PedidoModel> obtenerPedidos()
         {
             string consulta = "SELECT * FROM Pedido;";
