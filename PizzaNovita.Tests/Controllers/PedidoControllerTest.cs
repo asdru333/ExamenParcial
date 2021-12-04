@@ -11,6 +11,32 @@ namespace PizzaNovita.Tests.Controllers
         string nombre = "Pizza de jamón";
 
         [TestMethod]
+        public void TestListaPedidosViewIsNotNull()
+        {
+            // Arrange
+            PedidoController pedidoController = new PedidoController();
+
+            // Act
+            ActionResult result = pedidoController.listaPedidos();
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestListaPedidosViewResult()
+        {
+            //Arrange 
+            PedidoController pedidoController = new PedidoController();
+
+            //Act 
+            ViewResult vista = pedidoController.listaPedidos() as ViewResult;
+
+            //Assert 
+            Assert.AreEqual("listaPedidos", vista.ViewName);
+        }
+
+        [TestMethod]
         public void TestPedidoViewResultNotNull()
         {
             //Arrange 

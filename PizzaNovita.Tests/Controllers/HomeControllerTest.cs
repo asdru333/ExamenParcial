@@ -19,7 +19,7 @@ namespace PizzaNovita.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ActionResult result = controller.Index();
 
             // Assert
             Assert.IsNotNull(result);
@@ -36,6 +36,31 @@ namespace PizzaNovita.Tests.Controllers
 
             //Assert 
             Assert.AreEqual("Index", vista.ViewName);
+        }
+
+        public void TestAdministracionViewIsNotNull()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            ActionResult result = controller.Index();
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void TestAdministracionViewResult()
+        {
+            //Arrange 
+            HomeController comestibleController = new HomeController();
+
+            //Act 
+            ViewResult vista = comestibleController.panelDeAdministracion() as ViewResult;
+
+            //Assert 
+            Assert.AreEqual("panelDeAdministracion", vista.ViewName);
         }
     }
 }
