@@ -11,9 +11,15 @@ namespace PizzaNovita.Controllers
 {
     public class ComboController : Controller
     {
+        private ComboHandler accesoDatos;
+
+        public ComboController()
+        {
+            accesoDatos = new ComboHandler();
+        }
+
         public ActionResult listaCombos()
         {
-            ComboHandler accesoDatos = new ComboHandler();
             ViewBag.combo = accesoDatos.obtenerCombos();
             return View("listaCombos");
         }
@@ -21,34 +27,30 @@ namespace PizzaNovita.Controllers
         [HttpGet]
         public ActionResult obtenerImagen(string nombre)
         {
-            ComboHandler comboHandler = new ComboHandler();
-            var tupla = comboHandler.obtenerFoto(nombre);
+            var tupla = accesoDatos.obtenerFoto(nombre);
             return File(tupla.Item1, tupla.Item2);
         }
 
         [HttpGet]
         public ActionResult agregarCombo()
         {
-            ComboHandler comboHandler = new ComboHandler();
-            ViewBag.pizzas = comboHandler.obtenerNombresPizzas();
-            ViewBag.bebidas = comboHandler.obtenerNombresBebidas();
-            ViewBag.acompanantes = comboHandler.obtenerNombresAcompanantes();
+            ViewBag.pizzas = accesoDatos.obtenerNombresPizzas();
+            ViewBag.bebidas = accesoDatos.obtenerNombresBebidas();
+            ViewBag.acompanantes = accesoDatos.obtenerNombresAcompanantes();
             return View("agregarCombo");
         }
 
         [HttpPost]
         public ActionResult agregarCombo(ComboModel combo)
         {
-            ComboHandler comboHandler = new ComboHandler();
-            ViewBag.pizzas = comboHandler.obtenerNombresPizzas();
-            ViewBag.bebidas = comboHandler.obtenerNombresBebidas();
-            ViewBag.acompanantes = comboHandler.obtenerNombresAcompanantes();
+            ViewBag.pizzas = accesoDatos.obtenerNombresPizzas();
+            ViewBag.bebidas = accesoDatos.obtenerNombresBebidas();
+            ViewBag.acompanantes = accesoDatos.obtenerNombresAcompanantes();
             ViewBag.ExitoAlCrear = false;
             try
             {
                 if (ModelState.IsValid)
                 {
-                    ComboHandler accesoDatos = new ComboHandler();
                     ViewBag.ExitoAlCrear = accesoDatos.agregarCombo(combo);
                     if (ViewBag.ExitoAlCrear)
                     {

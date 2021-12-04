@@ -67,46 +67,35 @@ namespace PizzaNovita.Handlers
             return obtenerArchivo(consulta, parametro, columnaContenido, columnaTipo);
         }
 
-        public List<SelectListItem> obtenerNombresPizzas()
+        public List<SelectListItem> obtenerLista(string consulta)
         {
-            string consulta = "SELECT nombrePK FROM Comestible C JOIN Pizza P ON C.nombrePK = P.nombreFK;";
-            List<SelectListItem> pizzas = new List<SelectListItem>();
+            List<SelectListItem> lista = new List<SelectListItem>();
             DataTable tabla = leerBaseDeDatos(consulta);
             string item = "";
             foreach (DataRow columna in tabla.Rows)
             {
                 item = (Convert.ToString(columna["nombrePK"]));
-                pizzas.Add(new SelectListItem { Text = item, Value = item });
+                lista.Add(new SelectListItem { Text = item, Value = item });
             }
-            return pizzas;
+            return lista;
+        }
+
+        public List<SelectListItem> obtenerNombresPizzas()
+        {
+            string consulta = "SELECT nombrePK FROM Comestible C JOIN Pizza P ON C.nombrePK = P.nombreFK WHERE P.personalizada = 0;";
+            return obtenerLista(consulta);
         }
 
         public List<SelectListItem> obtenerNombresBebidas()
         {
             string consulta = "SELECT nombrePK FROM Comestible C JOIN Bebida B ON C.nombrePK = B.nombreFK;";
-            List<SelectListItem> bebidas = new List<SelectListItem>();
-            DataTable tabla = leerBaseDeDatos(consulta);
-            string item = "";
-            foreach (DataRow columna in tabla.Rows)
-            {
-                item = (Convert.ToString(columna["nombrePK"]));
-                bebidas.Add(new SelectListItem { Text = item, Value = item });
-            }
-            return bebidas;
+            return obtenerLista(consulta);
         }
 
         public List<SelectListItem> obtenerNombresAcompanantes()
         {
             string consulta = "SELECT nombrePK FROM Comestible C JOIN Acompanante A ON C.nombrePK = A.nombreFK;";
-            List<SelectListItem> acompanantes = new List<SelectListItem>();
-            DataTable tabla = leerBaseDeDatos(consulta);
-            string item = "";
-            foreach (DataRow columna in tabla.Rows)
-            {
-                item = (Convert.ToString(columna["nombrePK"]));
-                acompanantes.Add(new SelectListItem { Text = item, Value = item });
-            }
-            return acompanantes;
+            return obtenerLista(consulta);
         }
     }
 }
