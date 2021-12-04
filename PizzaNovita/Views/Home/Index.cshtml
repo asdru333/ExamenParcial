@@ -39,12 +39,12 @@
                     <li>@combo.pizza</li>
                     <li>@combo.bebida</li>
                     <li>@combo.acompanante</li>
-                    @Html.ActionLink("Recoger", "recoger", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
-                    @Html.ActionLink("A domicilio", "aDomicilio", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
                 </ul>
                 <p>Precio: @combo.precio colones</p>
+                @Html.ActionLink("Recoger", "recoger", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("A domicilio", "aDomicilio", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
             </div>
-            if (contador <= 2)
+            if (contador <= 3)
             {
                 contador = contador + 1;
             }

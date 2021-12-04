@@ -26,7 +26,8 @@ namespace PizzaNovita.Handlers
                         nombreCliente = Convert.ToString(columna["pizzaFK"]),
                         apellidoCliente = Convert.ToString(columna["bebidaFK"]),
                         direccion = Convert.ToString(columna["direccion"]),
-                        precio = Convert.ToDouble(columna["precio"])
+                        precio = Convert.ToDouble(columna["precio"]),
+                        tipo = Convert.ToString(columna["tipo"])
                     });
             }
             return pedido;
@@ -34,15 +35,16 @@ namespace PizzaNovita.Handlers
 
         public bool agregarPedido(PedidoModel pedido)
         {
-            string consulta = "INSERT INTO Pedido ( nombreComestibleFK, nombreCliente, apellidoCliente, direccion, precio ) "
-                + "VALUES ( @comestible, @nombreCliente, @apellidoCliente, @direccion, @precio );";
+            string consulta = "INSERT INTO Pedido ( nombreComestibleFK, nombreCliente, apellidoCliente, direccion, precio, tipo ) "
+                + "VALUES ( @comestible, @nombreCliente, @apellidoCliente, @direccion, @precio, @tipo );";
 
             Dictionary<string, object> valoresParametros = new Dictionary<string, object> {
                 {"@comestible", pedido.nombreComestible },
                 {"@nombreCliente", pedido.nombreCliente },
                 {"@apellidoCliente", pedido.apellidoCliente },
                 {"@direccion", pedido.direccion },
-                {"@precio", pedido.precio }
+                {"@precio", pedido.precio },
+                {"@tipo", pedido.tipo }
             };
 
             return (insertarEnBaseDatos(consulta, valoresParametros));

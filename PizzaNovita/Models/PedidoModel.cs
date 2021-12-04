@@ -28,5 +28,7 @@ namespace PizzaNovita.Models
 
         [Display(Name = "Precio")]
         public double precio { get; set; }
+
+        public string tipo { get; set; }
     }
 }

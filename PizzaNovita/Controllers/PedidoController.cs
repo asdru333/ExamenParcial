@@ -29,6 +29,7 @@ namespace PizzaNovita.Controllers
             pedido.nombreComestible = Request.Form["nombreComestible"];
             pedido.precio = Double.Parse(Request.Form["precioComestible"]);
             pedido.direccion = "";
+            pedido.tipo = "recoger";
             ViewBag.nombreComestible = pedido.nombreComestible;
             ViewBag.precio = pedido.precio;
             ViewBag.foto = Request.Form["fotoComestible"];
@@ -67,6 +68,7 @@ namespace PizzaNovita.Controllers
             PedidoHandler accesoDatos = new PedidoHandler();
             pedido.nombreComestible = Request.Form["nombreComestible"];
             pedido.precio = Double.Parse(Request.Form["precioComestible"]);
+            pedido.tipo = "aDomicilio";
             ViewBag.nombreComestible = pedido.nombreComestible;
             ViewBag.precio = pedido.precio;
             ViewBag.foto = Request.Form["fotoComestible"];
