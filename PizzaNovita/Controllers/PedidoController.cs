@@ -11,11 +11,24 @@ namespace PizzaNovita.Controllers
 {
     public class PedidoController : Controller
     {
+        private PedidoHandler accesoDatos;
+
+        public PedidoController()
+        {
+            accesoDatos = new PedidoHandler();
+        }
+
+        public ActionResult listaPedidos()
+        {
+            ViewBag.pedidos = accesoDatos.obtenerPedidos();
+            return View("listaPedidos");
+        }
+
         [HttpGet]
         public ActionResult recoger(string nombre)
         {
-            ComestibleHandler accesoDatos = new ComestibleHandler();
-            ComestibleModel comestible = accesoDatos.obtenerComestible(nombre);
+            ComestibleHandler comestibleAccesoDatos = new ComestibleHandler();
+            ComestibleModel comestible = comestibleAccesoDatos.obtenerComestible(nombre);
             ViewBag.nombreComestible = comestible.nombre;
             ViewBag.precio = comestible.precio;
             ViewBag.foto = comestible.fotoTipo;
@@ -25,7 +38,6 @@ namespace PizzaNovita.Controllers
         [HttpPost]
         public ActionResult recoger(PedidoModel pedido)
         {
-            PedidoHandler accesoDatos = new PedidoHandler();
             pedido.nombreComestible = Request.Form["nombreComestible"];
             pedido.precio = Double.Parse(Request.Form["precioComestible"]);
             pedido.direccion = "";
@@ -65,7 +77,6 @@ namespace PizzaNovita.Controllers
         [HttpPost]
         public ActionResult aDomicilio(PedidoModel pedido)
         {
-            PedidoHandler accesoDatos = new PedidoHandler();
             pedido.nombreComestible = Request.Form["nombreComestible"];
             pedido.precio = Double.Parse(Request.Form["precioComestible"]);
             pedido.tipo = "aDomicilio";

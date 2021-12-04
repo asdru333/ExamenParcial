@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Pedidos</title>
+    <meta charset="utf-8" />
+    <style>
+        .cuadro {
+        border-radius: 0.3em;
+        border: 1px solid #aaa;
+        margin: 1em;
+        padding: 1em;
+        height: 18em;
+        text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pedidos</h1>
+    <div class="row d-flex flex-wrap align-items-center">
+        @foreach (var pedido in ViewBag.pedidos)
+        { 
+            <div class="col-md-3">
+                <div class="cuadro">
+                    <h3>#@pedido.ID</h3>
+                    <h4>Tipo: @pedido.tipo</h4>
+                    <p>comestible: @pedido.nombreComestible</p>
+                    <p>nombre dle cliente: @pedido.nombreCliente</p>
+                    <p>apellido del cliente: @pedido.apellidoCliente</p>
+                    @if (pedido.tipo == "aDomicilio")
+                    {
+                        <p>dirección del cliente: @pedido.direccion</p>
+                    }
+                    <h4>Precio total: @pedido.precio</h4>
+                </div>
+            </div>
+         }
+    </div>
+</body>
+</html>

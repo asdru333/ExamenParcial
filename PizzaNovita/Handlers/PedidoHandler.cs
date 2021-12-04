@@ -11,6 +11,8 @@ namespace PizzaNovita.Handlers
 {
     public class PedidoHandler : BaseDatosHandler
     {
+
+
         public List<PedidoModel> obtenerPedidos()
         {
             string consulta = "SELECT * FROM Pedido;";
@@ -22,9 +24,9 @@ namespace PizzaNovita.Handlers
                     new PedidoModel
                     {
                         ID = Convert.ToInt32(columna["pedidoIDPK"]),
-                        nombreComestible = Convert.ToString(columna["precio"]),
-                        nombreCliente = Convert.ToString(columna["pizzaFK"]),
-                        apellidoCliente = Convert.ToString(columna["bebidaFK"]),
+                        nombreComestible = Convert.ToString(columna["nombreComestibleFK"]),
+                        nombreCliente = Convert.ToString(columna["nombreCliente"]),
+                        apellidoCliente = Convert.ToString(columna["apellidoCliente"]),
                         direccion = Convert.ToString(columna["direccion"]),
                         precio = Convert.ToDouble(columna["precio"]),
                         tipo = Convert.ToString(columna["tipo"])

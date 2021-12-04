@@ -186,6 +186,7 @@
     <Content Include="Views\PizzaPersonalizada\agregarPizzaPersonalizada.cshtml" />
     <Content Include="Views\PizzaPersonalizada\pedirPizzaPersonalizada.cshtml" />
     <Content Include="Views\Home\panelDeAdministracion.cshtml" />
+    <Content Include="Views\Pedido\listaPedidos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
