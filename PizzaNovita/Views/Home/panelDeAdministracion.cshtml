@@ -12,9 +12,17 @@
             padding: 1em;
             height: 8em;
             box-shadow: 7px 7px 0px 0px #aaa;
+            Background: orangered;
             text-align: center;
+        }
+
+        .dobleLinea {
+            width: 28em;
+        }
+
+        .cuadro > h1 > a {
             color:#FFF;
-            Background: orangered
+            Background: transparent;
         }
 
     </style>
@@ -27,31 +35,31 @@
 
         <div class="col-md-4">
             <div class="cuadro">
-                @Html.ActionLink("Agregar Pizza", "agregarPizza", "Comestible", new { @class = "h1" })
+                <h1>@Html.ActionLink("Agregar Pizza", "agregarPizza", "Comestible")</h1>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="cuadro">
-                @Html.ActionLink("Agregar Bebida", "agregarBebida", "Comestible", new { @class = "h1" })
+                <h1>@Html.ActionLink("Agregar Bebida", "agregarBebida", "Comestible")</h1>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cuadro dobleLinea">
+                <h1>@Html.ActionLink("Agregar Acompañante", "agregarAcompanante", "Comestible")</h1>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="cuadro">
-                @Html.ActionLink("Agregar Acompañante", "agregarAcompanante", "Comestible", new { @class = "h1" })
+                <h1>@Html.ActionLink("Agregar Combos", "agregarCombo", "Combo")</h1>
             </div>
         </div>
 
         <div class="col-md-4">
             <div class="cuadro">
-                @Html.ActionLink("Agregar Combos", "agregarCombos", "Combo", new { @class = "h1" })
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="cuadro">
-                @Html.ActionLink("Lista de Pedidos", "listaPedidos", "Pedido", new { @class = "h1" })
+               <h1> @Html.ActionLink("Lista de Pedidos", "listaPedidos", "Pedido")</h1>
             </div>
         </div>
         <br />
