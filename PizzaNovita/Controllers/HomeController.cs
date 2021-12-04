@@ -16,5 +16,10 @@ namespace PizzaNovita.Controllers
             ViewBag.combo = accesoDatos.obtenerCombos();
             return View("Index");
         }
+
+        public ActionResult panelDeAdministracion()
+        {
+            return View("panelDeAdministracion");
+        }
     }
 }

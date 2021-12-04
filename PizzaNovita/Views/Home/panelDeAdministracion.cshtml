@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Panel de administración</title>
+    <meta charset="utf-8" />
+    <style>
+
+        .cuadro {
+            border-radius: 0.3em;
+            border: 1px solid #aaa;
+            margin: 1em;
+            padding: 1em;
+            height: 8em;
+            box-shadow: 7px 7px 0px 0px #aaa;
+            text-align: center;
+            color:#FFF;
+            Background: orangered
+        }
+
+    </style>
+</head>
+
+<body>
+    <br />
+    <h1 style="text-align:center">Administración</h1>
+    <div class="row d-flex flex-wrap align-items-center">
+
+        <div class="col-md-4">
+            <div class="cuadro">
+                @Html.ActionLink("Agregar Pizza", "agregarPizza", "Comestible", new { @class = "h1" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cuadro">
+                @Html.ActionLink("Agregar Bebida", "agregarBebida", "Comestible", new { @class = "h1" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cuadro">
+                @Html.ActionLink("Agregar Acompañante", "agregarAcompanante", "Comestible", new { @class = "h1" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cuadro">
+                @Html.ActionLink("Agregar Combos", "agregarCombos", "Combo", new { @class = "h1" })
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="cuadro">
+                @Html.ActionLink("Lista de Pedidos", "listaPedidos", "Pedido", new { @class = "h1" })
+            </div>
+        </div>
+        <br />
+    </div>
+</body>
+</html>

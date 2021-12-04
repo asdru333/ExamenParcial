@@ -174,8 +174,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Comestible\listaComestibles.cshtml" />
     <Content Include="Views\Comestible\agregarPizza.cshtml" />
@@ -187,6 +185,7 @@
     <Content Include="Views\Pedido\aDomicilio.cshtml" />
     <Content Include="Views\PizzaPersonalizada\agregarPizzaPersonalizada.cshtml" />
     <Content Include="Views\PizzaPersonalizada\pedirPizzaPersonalizada.cshtml" />
+    <Content Include="Views\Home\panelDeAdministracion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
