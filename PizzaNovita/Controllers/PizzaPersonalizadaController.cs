@@ -10,6 +10,7 @@ namespace PizzaNovita.Controllers
 {
     public class PizzaPersonalizadaController : Controller
     {
+        [HttpGet]
         public ActionResult agregarPizzaPersonalizada()
         {
             return View("agregarPizzaPersonalizada");
