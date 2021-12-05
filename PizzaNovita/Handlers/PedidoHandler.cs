@@ -6,10 +6,11 @@ using System.IO;
 using System;
 using System.Web.Mvc;
 using PizzaNovita.Models;
+using PizzaNovita.Moqs;
 
 namespace PizzaNovita.Handlers
 {
-    public class PedidoHandler : BaseDatosHandler
+    public class PedidoHandler : BaseDatosHandler, IPedidoService
     {
         public List<PedidoModel> obtenerPedidos()
         {

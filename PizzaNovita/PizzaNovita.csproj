@@ -147,6 +147,7 @@
     <Compile Include="Models\ComestibleModel.cs" />
     <Compile Include="Moqs\IComboService.cs" />
     <Compile Include="Moqs\IComestibleService.cs" />
+    <Compile Include="Moqs\IPedidoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

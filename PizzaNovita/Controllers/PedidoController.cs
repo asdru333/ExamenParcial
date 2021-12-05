@@ -5,17 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using PizzaNovita.Models;
 using PizzaNovita.Handlers;
+using PizzaNovita.Moqs;
 
 
 namespace PizzaNovita.Controllers
 {
     public class PedidoController : Controller
     {
-        private PedidoHandler accesoDatos;
+        readonly IPedidoService accesoDatos;
 
         public PedidoController()
         {
             accesoDatos = new PedidoHandler();
+        }
+
+        public PedidoController(IPedidoService servicio)
+        {
+            accesoDatos = servicio;
         }
 
         public ActionResult listaPedidos()
