@@ -13,7 +13,7 @@ namespace PizzaNovita.Tests.Controllers
     public class PizzaPersonalizadaControllerTest
     {
         [TestMethod]
-        public void TestListaCombosViewResultNotNull()
+        public void TestGetListaPizzaPersonalizadaNoEsNulo()
         {
             //Arrange 
             PizzaPersonalizadaController pizzaPersonalizadaController = new PizzaPersonalizadaController();
@@ -26,7 +26,45 @@ namespace PizzaNovita.Tests.Controllers
         }
 
         [TestMethod]
-        public void TestAgregarComboViewResultNotNull()
+        public void TestGetListaPizzaPersonalizadaVistaResultado()
+        {
+            //Arrange 
+            PizzaPersonalizadaController pizzaPersonalizadaController = new PizzaPersonalizadaController();
+
+            //Act
+            ViewResult vista = pizzaPersonalizadaController.agregarPizzaPersonalizada() as ViewResult;
+
+            //Assert 
+            Assert.AreEqual("agregarPizzaPersonalizada", vista.ViewName);
+        }
+
+        [TestMethod]
+        public void TestPostListaPizzaPersonalizadaNoEsNulo()
+        { 
+            PizzaPersonalizadaController pizzaPersonalizadaController = new PizzaPersonalizadaController();
+
+            //Act
+            ActionResult vista = pizzaPersonalizadaController.agregarPizzaPersonalizada(crearModeloPizza());
+
+            //Assert
+            Assert.IsNotNull(vista);
+        }
+
+        [TestMethod]
+        public void TestPostListaPizzaPersonalizadaVistaResultado()
+        {
+            //Arrange 
+            PizzaPersonalizadaController pizzaPersonalizadaController = new PizzaPersonalizadaController();
+
+            //Act
+            ViewResult vista = pizzaPersonalizadaController.agregarPizzaPersonalizada(crearModeloPizza()) as ViewResult;
+
+            //Assert 
+            Assert.AreEqual("agregarPizzaPersonalizada", vista.ViewName);
+        }
+
+        [TestMethod]
+        public void TestAgregarPizzaPersonalizadaNoEsNulo()
         {
             PizzaModel pizza = crearModeloPizza();
 
@@ -41,20 +79,7 @@ namespace PizzaNovita.Tests.Controllers
         }
 
         [TestMethod]
-        public void TestListaCombosViewResult()
-        {
-            //Arrange 
-            PizzaPersonalizadaController pizzaPersonalizadaController = new PizzaPersonalizadaController();
-
-            //Act
-            ViewResult vista = pizzaPersonalizadaController.agregarPizzaPersonalizada() as ViewResult;
-
-            //Assert 
-            Assert.AreEqual("agregarPizzaPersonalizada", vista.ViewName);
-        }
-
-        [TestMethod]
-        public void TestAgregarComboViewResult()
+        public void TestAgregarPizzaPersonalizadaListaResultado()
         {
             PizzaModel pizza = crearModeloPizza();
 
