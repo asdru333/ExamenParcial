@@ -5,10 +5,11 @@ using System.Data.SqlClient;
 using System.IO;
 using System;
 using PizzaNovita.Models;
+using PizzaNovita.Moqs;
 
 namespace PizzaNovita.Handlers
 {
-    public class ComestibleHandler : BaseDatosHandler
+    public class ComestibleHandler : BaseDatosHandler, IComestibleService
     {
         ArchivosHandler manejadorDeImagen = new ArchivosHandler();
 

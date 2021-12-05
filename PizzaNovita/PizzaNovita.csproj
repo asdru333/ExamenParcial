@@ -139,6 +139,7 @@
     <Compile Include="Models\ComboModel.cs" />
     <Compile Include="Models\PizzaModel.cs" />
     <Compile Include="Models\ComestibleModel.cs" />
+    <Compile Include="Moqs\IComestibleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

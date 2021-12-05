@@ -5,16 +5,22 @@ using System.Web;
 using System.Web.Mvc;
 using PizzaNovita.Models;
 using PizzaNovita.Handlers;
+using PizzaNovita.Moqs;
 
 namespace PizzaNovita.Controllers
 {
     public class ComestibleController : Controller
     {
-        private ComestibleHandler accesoDatos;
+        readonly IComestibleService accesoDatos;
 
         public ComestibleController()
         {
             accesoDatos = new ComestibleHandler();
+        }
+
+        public ComestibleController(IComestibleService servicio)
+        {
+            accesoDatos = servicio;
         }
 
         public ActionResult listaComestibles()

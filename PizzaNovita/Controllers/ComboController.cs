@@ -11,7 +11,7 @@ namespace PizzaNovita.Controllers
 {
     public class ComboController : Controller
     {
-        private ComboHandler accesoDatos;
+        ComboHandler accesoDatos;
 
         public ComboController()
         {
