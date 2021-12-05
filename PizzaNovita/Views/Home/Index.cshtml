@@ -8,17 +8,13 @@
 <head>
     <title>Pagina principal</title>
     <meta charset="utf-8" />
-</head>
-<body>
-    <h1>Combos</h1>
-
     <style>
         .cuadroComestible {
             margin-bottom: 10px;
             padding: 1em;
         }
 
-        img {
+        .comboImg {
             border-radius: 0.5em;
             border: 2px solid #133b5c;
             box-shadow: 0px 0px 0px #ccc;
@@ -26,13 +22,34 @@
             width: 150px;
             object-fit: cover;
         }
-    </style>
 
+        .logoImg {
+            border-radius: 0.5em;
+            border: 2px solid #133b5c;
+            box-shadow: 0px 0px 0px #ccc;
+            height: 420px;
+            width: 450px;
+            object-fit: cover;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+
+    </style>
+</head>
+<body>
+    <br />
+    <img src="~/img/logo.png" class="logoImg" />
+    <br />
+    <h1>Disfruta de nuestros combos</h1>
+    <br />
     <div class="row d-flex flex-wrap align-items-center">
         @foreach (var combo in ViewBag.combo)
         {
             <div class="cuadroComestible row d-flex flex-wrap align-items-center col-md-4">
-                <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = combo.nombre })>
+                <img src=@Url.Action("ObtenerImagen", "Comestible", new { nombre = combo.nombre }) class="comboImg">
                 <h3>@combo.nombre</h3>
                 <p>Contiene:</p>
                 <ul>
@@ -42,11 +59,11 @@
                 </ul>
                 <p>Precio: @combo.precio colones</p>
                 @Html.ActionLink("Recoger", "recoger", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
-                    @Html.ActionLink("A domicilio", "aDomicilio", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
+                @Html.ActionLink("A domicilio", "aDomicilio", "Pedido", new { nombre = combo.nombre.ToString() }, new { @class = "btn btn-success" })
             </div>
-            if (contador <= 3)
+            if (contador < 2)
             {
-                contador = contador + 1;
+                contador += 1;
             }
             else
             {
