@@ -6,6 +6,7 @@ using PizzaNovita.Controllers;
 using PizzaNovita.Models;
 using PizzaNovita.Moqs;
 using PizzaNovita.Handlers;
+using Moq;
 
 namespace PizzaNovita.Tests.Controllers
 {
@@ -13,7 +14,7 @@ namespace PizzaNovita.Tests.Controllers
     public class ComestibleControllerTest
     {
         [TestMethod]
-        public void TestListaComestiblesViewResultNotNull()
+        public void TestListaComestiblesVistaNoNula()
         {
             //Arrange 
             ComestibleController comestibleController = new ComestibleController();
@@ -26,7 +27,7 @@ namespace PizzaNovita.Tests.Controllers
         }
 
         [TestMethod]
-        public void TestListaComestibleViewResult()
+        public void TestListaComestibleVista()
         {
             //Arrange 
             ComestibleController comestibleController = new ComestibleController();
@@ -36,6 +37,122 @@ namespace PizzaNovita.Tests.Controllers
 
             //Assert 
             Assert.AreEqual("listaComestibles", vista.ViewName);
+        }
+
+        public void TestListaComestibleListaPizzasNoEsNula()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerPizzas(0)).Returns(new List<PizzaModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaPizzas = vistaResultado.ViewBag.pizza;
+
+            Assert.IsNotNull(listaPizzas);
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaPizzasEsTipoLista()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerPizzas(0)).Returns(new List<PizzaModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaPizzas = vistaResultado.ViewBag.pizza;
+
+            Assert.IsInstanceOfType(listaPizzas, typeof(List<PizzaModel>));
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaPizzasNoTienesNulos()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerPizzas(0)).Returns(new List<PizzaModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaPizzas = vistaResultado.ViewBag.pizza;
+
+            CollectionAssert.AllItemsAreNotNull(listaPizzas);
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaBebidasNoEsNula()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerBebidas()).Returns(new List<BebidaModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaBebidas = vistaResultado.ViewBag.bebida;
+
+            Assert.IsNotNull(listaBebidas);
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaBebidasEsTipoLista()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerBebidas()).Returns(new List<BebidaModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaBebidas = vistaResultado.ViewBag.bebida;
+
+            Assert.IsInstanceOfType(listaBebidas, typeof(List<BebidaModel>));
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaBebidasNoTienesNulos()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerBebidas()).Returns(new List<BebidaModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaBebidas = vistaResultado.ViewBag.bebida;
+
+            CollectionAssert.AllItemsAreNotNull(listaBebidas);
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaAcompanantesNoEsNula()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerAcompanantes()).Returns(new List<AcompananteModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaAcompanantes = vistaResultado.ViewBag.acompanante;
+
+            Assert.IsNotNull(listaAcompanantes);
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaAcompanantesEsTipoLista()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerAcompanantes()).Returns(new List<AcompananteModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaAcompanantes = vistaResultado.ViewBag.acompanante;
+
+            Assert.IsInstanceOfType(listaAcompanantes, typeof(List<AcompananteModel>));
+        }
+
+        [TestMethod]
+        public void TestListaComestibleListaAcompanantesNoTienesNulos()
+        {
+            var mockComestible = new Mock<IComestibleService>();
+            mockComestible.Setup(servicio => servicio.obtenerAcompanantes()).Returns(new List<AcompananteModel>());
+            ComestibleController comestibleController = new ComestibleController(mockComestible.Object);
+
+            ViewResult vistaResultado = comestibleController.listaComestibles() as ViewResult;
+            var listaAcompanantes = vistaResultado.ViewBag.acompanante;
+
+            CollectionAssert.AllItemsAreNotNull(listaAcompanantes);
         }
 
         [TestMethod]
@@ -52,19 +169,6 @@ namespace PizzaNovita.Tests.Controllers
         }
 
         [TestMethod]
-        public void TestPostAgregarPizzaViewResultNotNull()
-        {
-            //Arrange 
-            ComestibleController comestibleController = new ComestibleController();
-
-            //Act 
-            ActionResult vista = comestibleController.agregarPizza(crearModeloPizza());
-
-            //Assert 
-            Assert.IsNotNull(vista);
-        }
-
-        [TestMethod]
         public void TestGetAgregarPizzaViewResult()
         {
             //Arrange 
@@ -75,6 +179,19 @@ namespace PizzaNovita.Tests.Controllers
 
             //Assert 
             Assert.AreEqual("agregarPizza", vista.ViewName);
+        }
+
+        [TestMethod]
+        public void TestPostAgregarPizzaViewResultNotNull()
+        {
+            //Arrange 
+            ComestibleController comestibleController = new ComestibleController();
+
+            //Act 
+            ActionResult vista = comestibleController.agregarPizza(crearModeloPizza());
+
+            //Assert 
+            Assert.IsNotNull(vista);
         }
 
         [TestMethod]
