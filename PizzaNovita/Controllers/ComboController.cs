@@ -5,17 +5,23 @@ using System.Web;
 using System.Web.Mvc;
 using PizzaNovita.Models;
 using PizzaNovita.Handlers;
+using PizzaNovita.Moqs;
 
 
 namespace PizzaNovita.Controllers
 {
     public class ComboController : Controller
     {
-        ComboHandler accesoDatos;
+        readonly IComboService accesoDatos;
 
         public ComboController()
         {
             accesoDatos = new ComboHandler();
+        }
+
+        public ComboController(IComboService servicio)
+        {
+            accesoDatos = servicio;
         }
 
         public ActionResult listaCombos()

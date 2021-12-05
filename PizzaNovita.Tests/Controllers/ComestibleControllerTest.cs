@@ -39,6 +39,7 @@ namespace PizzaNovita.Tests.Controllers
             Assert.AreEqual("listaComestibles", vista.ViewName);
         }
 
+        [TestMethod]
         public void TestListaComestibleListaPizzasNoEsNula()
         {
             var mockComestible = new Mock<IComestibleService>();
@@ -324,7 +325,6 @@ namespace PizzaNovita.Tests.Controllers
 
         private BebidaModel crearModeloBebida()
         {
-            ComestibleHandler comestibleHandler = new ComestibleHandler();
             BebidaModel bebida = new BebidaModel
             {
                 nombre = "Coca cola",
@@ -338,7 +338,6 @@ namespace PizzaNovita.Tests.Controllers
 
         private AcompananteModel crearModeloAcompanante()
         {
-            ComestibleHandler comestibleHandler = new ComestibleHandler();
             AcompananteModel acompanante = new AcompananteModel
             {
                 nombre = "Pan de ajo",

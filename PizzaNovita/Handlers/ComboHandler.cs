@@ -6,10 +6,11 @@ using System.IO;
 using System;
 using System.Web.Mvc;
 using PizzaNovita.Models;
+using PizzaNovita.Moqs;
 
 namespace PizzaNovita.Handlers
 {
-    public class ComboHandler : BaseDatosHandler
+    public class ComboHandler : BaseDatosHandler, IComboService
     {
         ArchivosHandler manejadorDeImagen = new ArchivosHandler();
 
